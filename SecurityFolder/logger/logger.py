@@ -11,4 +11,4 @@ LOG_FILE_PATH = os.path.join(LOG_PATH, LOG_FILE)
 logging.basicConfig(filename=LOG_FILE_PATH, level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p',
-                    filemode='w')
+                    filemode='a')
