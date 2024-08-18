@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: opsurlsecurity
+Version: 0.0.1
+Summary: opsurlsecurity
+Author: Shoaib Shaikh
+Author-email: shoowaib95@gmail.com
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: pymongo
+Requires-Dist: certifi

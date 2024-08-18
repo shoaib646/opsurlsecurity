@@ -1,0 +1,7 @@
+README.md
+setup.py
+opsurlsecurity.egg-info/PKG-INFO
+opsurlsecurity.egg-info/SOURCES.txt
+opsurlsecurity.egg-info/dependency_links.txt
+opsurlsecurity.egg-info/requires.txt
+opsurlsecurity.egg-info/top_level.txt
