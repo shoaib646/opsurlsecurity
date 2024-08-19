@@ -16,11 +16,11 @@ from SecurityFolder.logger.logger import *
 
 # configrations
 from SecurityFolder.entities.config import (TrainingPipelineConfig,DataIngestionConfig, DataTransformationConfig,DataValidationConfig,
-                                           ModelDeploymentConfig, ModelEvaluationConfig, ModelTrainerConfig)
+                                           ModelRegistryConfig, ModelEvaluationConfig, ModelTrainerConfig)
 
 #artifacts
 from SecurityFolder.entities.artifacts import (DataIngestionArtifact,DataTransformationArtifact,DataValidationArtifact,
-                                              ModelDeploymentArtifact,ModelEvaluationArtifact,ModelTrainerArtifact)
+                                              ModelRegistryArtifact,ModelEvaluationArtifact,ModelTrainerArtifact)
 
 
 windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()

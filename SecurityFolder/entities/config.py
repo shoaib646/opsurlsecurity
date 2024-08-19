@@ -1,25 +1,46 @@
 
 import subprocess
 windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()
+
+import  datetime, os
+from SecurityFolder.constants import TrainingPipeline
+
+
+print(TrainingPipeline.ARTIFACT_DIR)
+
+
+
+
 class TrainingPipelineConfig:
-    pass
+    def __init__(self):
+        pass
 
 class DataIngestionConfig:
-    pass
-
-class DataTransformationConfig:
-    pass
+    def __init__(self):
+        pass
 
 class DataValidationConfig:
-    pass
+    def __init__(self):
+        pass
 
-class ModelDeploymentConfig:
-    pass
-
-class ModelEvaluationConfig:
-    pass
+class DataTransformationConfig:
+    def __init__(self):
+        pass
 
 class ModelTrainerConfig:
-    pass
+    def __init__(self):
+        pass
+
+class ModelEvaluationConfig:
+    def __init__(self):
+        pass
+
+class ModelRegistryConfig:
+    def __init__(self):
+        pass
+
+
+
+
 
 

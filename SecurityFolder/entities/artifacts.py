@@ -4,22 +4,38 @@ windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], std
 
 
 
+from dataclasses import dataclass
+
+
+
+
+
+@dataclass
 class DataIngestionArtifact:
     pass
 
-class DataTransformationArtifact:
-    pass
-
+@dataclass
 class DataValidationArtifact:
     pass
 
-class ModelDeploymentArtifact:
+@dataclass
+class DataTransformationArtifact:
     pass
 
+@dataclass
+class ModelTrainerArtifact:
+    pass
+
+@dataclass
 class ModelEvaluationArtifact:
     pass
 
-class ModelTrainerArtifact:
+@dataclass
+class ModelRegistrytArtifact:
     pass
+
+
+
+
 
 
