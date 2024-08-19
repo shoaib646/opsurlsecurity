@@ -1,6 +1,6 @@
 
 from SecurityFolder.exception.exception import NetworkException
-# from SecurityFolder.logger import logging
+from SecurityFolder.logger.logger import logging
 
 from SecurityFolder.entities.artifacts import DataIngestionArtifact
 from SecurityFolder.entities.config import  DataIngestionConfig
@@ -73,12 +73,12 @@ class DataIngestion:
             directory = os.path.dirname(self.data_ingestion_config.training_file_path)  #access
             os.makedirs(directory, exist_ok=True)
 
-            print(f"Exporting train and test directories")
+            logging.info(f"Exporting train and test directories")
 
             train_set.to_csv(train_file_name, index=False, header=True)
             test_set.to_csv(test_file_name, index=False, header=True)
 
-            print(f"Completed! Exporting, train and test data")
+            logging.info(f"Completed! Exporting, train and test data")
 
 
         except Exception as e:

@@ -46,20 +46,20 @@ class TrainingPipeline:
         try:
             pass
         except Exception as e:
-            raise NetworkException(e,"Failed to Validate Data", sys._getframe().f_lineno, windowname)
+            raise NetworkException(e,sys)
 
     def start_data_transformation(self):
         try:
             pass
         except Exception as e:
-            raise NetworkException(e,"Failed to Transform Data", sys._getframe().f_lineno, windowname)
+            raise NetworkException(e,sys)
 
 
     def start_model_training(self):
         try:
             pass
         except Exception as e:
-            raise NetworkException(e,"Failed to Train Model", sys._getframe().f_lineno, windowname)
+            raise NetworkException(e,sys)
 
 
     def start_model_evaluation(self):

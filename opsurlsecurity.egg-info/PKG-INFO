@@ -6,6 +6,8 @@ Author: Shoaib Shaikh
 Author-email: shoowaib95@gmail.com
 Requires-Dist: python-dotenv
 Requires-Dist: pandas
+Requires-Dist: scikit-learn
 Requires-Dist: numpy
 Requires-Dist: pymongo
 Requires-Dist: certifi
+Requires-Dist: pymongo[srv]
