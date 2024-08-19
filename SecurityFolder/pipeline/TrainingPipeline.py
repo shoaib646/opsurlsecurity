@@ -1,0 +1,2 @@
+class TrainigPipeline:
+    pass
