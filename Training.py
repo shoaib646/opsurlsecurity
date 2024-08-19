@@ -1,6 +1,6 @@
 import os, sys
 from SecurityFolder.exception.exception import NetworkException
-from SecurityFolder.logger.logger import *
+from SecurityFolder.logger.logger import logging
 
 from SecurityFolder.pipeline.TrainingPipeline import TrainingPipeline
 

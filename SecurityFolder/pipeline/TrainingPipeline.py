@@ -12,7 +12,7 @@ import subprocess # for getting filename of error while debugging
 
 # Exceptions & loggers
 from SecurityFolder.exception.exception import NetworkException
-from SecurityFolder.logger.logger import *
+from SecurityFolder.logger.logger import logging
 
 # configrations
 from SecurityFolder.entities.config import (TrainingPipelineConfig,DataIngestionConfig, DataTransformationConfig,DataValidationConfig,
@@ -20,20 +20,26 @@ from SecurityFolder.entities.config import (TrainingPipelineConfig,DataIngestion
 
 #artifacts
 from SecurityFolder.entities.artifacts import (DataIngestionArtifact,DataTransformationArtifact,DataValidationArtifact,
-                                              ModelRegistryArtifact,ModelEvaluationArtifact,ModelTrainerArtifact)
+                                              ModelRegistrytArtifact,ModelEvaluationArtifact,ModelTrainerArtifact)
 
 
 windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()
 
 class TrainingPipeline:
     def __init__(self):
-        pass
+        self.training_pipeline_config = TrainingPipelineConfig()
 
     def start_data_ingestion(self):
         try:
-            pass
+            self.data_ingestion_config = DataIngestionConfig(training_pipeline_config=self.training_pipeline_config)
+            logging.info("Starting data ingestion")
+            data_ingestion = DataIngestion(data_ingestion_config=self.data_ingestion_config)
+            data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
+            logging.info(f"Data ingestion completed and artifact: {data_ingestion_artifact}")
+            return data_ingestion_artifact
+
         except Exception as e:
-            raise NetworkException(e, "Failed to start data ingestion", sys._getframe().f_lineno, windowname)
+            raise NetworkException(e, sys)
 
 
     def start_data_validation(self):
@@ -71,9 +77,10 @@ class TrainingPipeline:
 
     def run_pipeline(self):
         try:
-            pass
+            data_ingestion_artifact = self.start_data_ingestion()
+            print(data_ingestion_artifact)
         except Exception as e:
-            raise NetworkException(e,"Failed to Run  Training Pipeline", sys._getframe().f_lineno, windowname)
+            raise NetworkException(e,sys)
 
 
 

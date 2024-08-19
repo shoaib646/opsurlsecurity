@@ -1,10 +1,10 @@
 
 from SecurityFolder.exception.exception import NetworkException
-from SecurityFolder.logger import  log_setup
+# from SecurityFolder.logger import logging
 
 from SecurityFolder.entities.artifacts import DataIngestionArtifact
 from SecurityFolder.entities.config import  DataIngestionConfig
-
+import sys
 import  os
 import pandas as pd
 import  numpy as np
@@ -13,7 +13,8 @@ import pymongo # reading data from mongo database
 from typing import List
 from dotenv import load_dotenv
 load_dotenv()
-DB_URL = os.getenv("MONGO_URL")
+MONGO_DB_URL=os.getenv("MONGO_URL")
+# print(MONGO_DB_URL)
 
 
 
@@ -36,7 +37,7 @@ class DataIngestion:
             db_name = self.data_ingestion_config.database_name     #access
             collection_name = self.data_ingestion_config.collection_name #access
 
-            self.mongo_client = pymongo.mongo_client(DB_URL)
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
             collection = self.mongo_client[db_name][collection_name]
 
             dataframe = pd.DataFrame(list(collection.find()))
@@ -48,7 +49,7 @@ class DataIngestion:
             return dataframe
 
         except Exception as e:
-            raise NetworkException(e, sys._getframe().f_lineno, windowname)
+            raise NetworkException(e, sys)
 
     def export_feature_store(self, dataframe: pd.DataFrame):
         try:
@@ -72,12 +73,12 @@ class DataIngestion:
             directory = os.path.dirname(self.data_ingestion_config.training_file_path)  #access
             os.makedirs(directory, exist_ok=True)
 
-            log_setup.INFO(f"Exporting train and test directories")
+            print(f"Exporting train and test directories")
 
             train_set.to_csv(train_file_name, index=False, header=True)
             test_set.to_csv(test_file_name, index=False, header=True)
 
-            log_setup.INFO(f"Completed! Exporting, train and test data")
+            print(f"Completed! Exporting, train and test data")
 
 
         except Exception as e:
@@ -97,4 +98,4 @@ class DataIngestion:
 
 
         except Exception as e:
-            raise NetworkException(e, sys._getframe().f_lineno, windowname)
+            raise NetworkException(e, sys)
