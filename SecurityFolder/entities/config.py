@@ -6,7 +6,7 @@ import  datetime, os
 from SecurityFolder.constants import TrainingPipeline
 
 
-print(TrainingPipeline.ARTIFACT_DIR)
+# print(TrainingPipeline.ARTIFACT_DIR)
 
 
 

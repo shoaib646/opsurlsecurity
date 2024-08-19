@@ -31,18 +31,21 @@ SCHEMA_DROP_COLS    = "drop_columns"
 SAVE_MODEL_DIR = os.path.join("saved_models")
 
 
+DB_URL : str = os.getenv('MONGO_URL')
+COLLECTION_NAME : str = os.getenv('MONGO_COLLECTION')
+DATABASE_NAME : str  = os.getenv('MONGO_DB')
 
 
 '''
 Data Ingestion related constant variables
 '''
 
-DATA_INGESTION_COLLECTION_NAME : str = os.getenv('MONGO_COLLECTION')
-DATA_INGESTION_DATABASE_NAME : str  = os.getenv('MONGO_DB')
 DATA_INGESTION_DIR_NAME : str  = "Data-Ingestion"
-DATA_INGESTION_FEATURE_STORE_NAME : str = "feature_store"
+DATA_INGESTION_FEATURE_STORE_DIR_NAME : str = "feature_store"
 DATA_INGESTED_DIR : str = "ingested_data"
 DATA_INGESTION_SPLIT_RATIO : float  = 0.2
+
+
 
 
 
