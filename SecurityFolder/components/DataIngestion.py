@@ -10,14 +10,7 @@ import pandas as pd
 import  numpy as np
 import pymongo # reading data from mongo database
 from typing import List
-from dotenv import load_dotenv
 
-
-load_dotenv()
-
-mongo_url = os.getenv('MONGO_URL')
-dbname = os.getenv('MONGO_DB')
-collectionname = os.getenv('MONGO_COLLECTION')
 
 import subprocess
 windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()
