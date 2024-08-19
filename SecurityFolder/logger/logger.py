@@ -1,5 +1,7 @@
 import  logging, os
 from datetime import datetime
+import subprocess
+windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()
 
 
 LOG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
