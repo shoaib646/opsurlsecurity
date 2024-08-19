@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 DB_URL = os.getenv("MONGO_URL")
 
-from SecurityFolder.constants import TrainingPipeline
+
 
 import subprocess
 windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()
@@ -89,7 +89,8 @@ class DataIngestion:
             dataframe = self.export_feature_store(dataframe=dataframe)
             self.split_data(dataframe=dataframe)
 
-            data_ingestion_artifact = DataIngestionArtifact(trained_file_path= self.data_ingestion_config.training_file_path ,
+            data_ingestion_artifact = DataIngestionArtifact(
+                                  trained_file_path= self.data_ingestion_config.training_file_path ,
                                   test_file_path = self.data_ingestion_config.testing_file_path,
                                   )
             return data_ingestion_artifact

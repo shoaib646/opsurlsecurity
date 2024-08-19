@@ -41,8 +41,8 @@ Data Ingestion related constant variables
 '''
 
 DATA_INGESTION_DIR_NAME : str  = "Data-Ingestion"
-DATA_INGESTION_FEATURE_STORE_DIR_NAME : str = "feature_store"
-DATA_INGESTED_DIR : str = "ingested_data"
+DATA_INGESTION_FEATURE_STORE_DIR_NAME : str = "Feature_Store"
+DATA_INGESTED_DIR : str = "Ingested_Data"
 DATA_INGESTION_SPLIT_RATIO : float  = 0.2
 
 
