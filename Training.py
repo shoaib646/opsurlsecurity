@@ -7,7 +7,8 @@ from SecurityFolder.pipeline.TrainingPipeline import TrainingPipeline
 
 def main():
     try:
-        pass
+        model_train = TrainingPipeline()
+        model_train.run_pipeline()
     except Exception as e:
         raise Exception(e, sys)
 
@@ -15,4 +16,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    pass
