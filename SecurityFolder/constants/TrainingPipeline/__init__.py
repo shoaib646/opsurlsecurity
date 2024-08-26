@@ -50,7 +50,11 @@ DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
 '''
 Data Validation related constant variables
 '''
-
+DATA_VALIDATION_DIR_NAME : str = 'Data_Validation_DIR'
+DATA_VALIDATION_VALID_DIR : str = 'Valid_Data_DIR'
+DATA_VALIDATION_INVALID_DIR : str = 'Invalid_Data_DIR'
+DATA_VALIDATION_DRIFT_REPORT_DIR : str = 'Drift_Report_DIR'
+DATA_VALIDATION_DRIFT_REPORT_FILE_NAME : str = 'report.yaml'
 
 
 
