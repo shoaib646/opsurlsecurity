@@ -23,7 +23,7 @@ from SecurityFolder.entities.artifacts import (DataIngestionArtifact,DataTransfo
                                               ModelRegistrytArtifact,ModelEvaluationArtifact,ModelTrainerArtifact)
 
 
-windowname = subprocess.run(['xdotool', 'getactivewindow', 'getwindowname'], stdout=subprocess.PIPE, text=True).stdout.strip()
+
 
 class TrainingPipeline:
     def __init__(self):
@@ -41,10 +41,15 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkException(e, sys)
 
-
-    def start_data_validation(self):
+    def start_data_validation(self,data_ingestion_artifact=DataIngestionArtifact):
         try:
-            pass
+            data_validation_config = DataValidationConfig(training_pipeline_config=self.training_pipeline_config)
+            logging.info("Starting data validation")
+            data_validation = DataValidation(data_validation_config=data_validation_config, data_ingestion_artifact = data_ingestion_artifact)
+            data_validation_artifact = data_validation.initiate_data_validation()
+            return data_validation_artifact
+
+
         except Exception as e:
             raise NetworkException(e,sys)
 
@@ -54,31 +59,29 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkException(e,sys)
 
-
     def start_model_training(self):
         try:
             pass
         except Exception as e:
             raise NetworkException(e,sys)
 
-
     def start_model_evaluation(self):
         try:
             pass
         except Exception as e:
-            raise NetworkException(e,"Failed to Evaluate Model", sys._getframe().f_lineno, windowname)
+            raise NetworkException(e,sys)
 
     def star_model_registy(self):
         try:
             pass
         except Exception as e:
-            raise NetworkException(e,"Failed to Register Model", sys._getframe().f_lineno, windowname)
-
+            raise NetworkException(e,sys)
 
     def run_pipeline(self):
         try:
             data_ingestion_artifact = self.start_data_ingestion()
-            print(data_ingestion_artifact)
+            data_validation = self.start_data_validation()
+
         except Exception as e:
             raise NetworkException(e,sys)
 

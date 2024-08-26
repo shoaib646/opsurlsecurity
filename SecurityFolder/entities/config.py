@@ -41,7 +41,7 @@ class DataIngestionConfig:
 
 
 class DataValidationConfig:
-    def __init__(self):
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
         pass
 
 class DataTransformationConfig:
