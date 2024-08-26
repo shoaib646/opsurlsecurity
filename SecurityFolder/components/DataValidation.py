@@ -1,8 +1,7 @@
 
 import  pandas as pd
 import numpy as np
-from openpyxl.worksheet.datavalidation import DataValidation
-from wheel.macosx_libfile import read_data
+
 
 from SecurityFolder.constants.TrainingPipeline import SCHEMA_FILE_PATH
 from SecurityFolder.entities.artifacts import DataIngestionArtifact, DataValidationArtifact
@@ -19,8 +18,14 @@ import os, sys
 
 
 class DataValidation:
-    def __init__(self):
-        pass
+    def __init__(self, data_ingestion_artifact : DataIngestionArtifact,data_validation_config:DataValidationConfig ):
+        try:
+            self.data_ingestion_artifact = data_ingestion_artifact
+            self.data_validation_config = data_validation_config
+            self._schema_config = read_yaml_file(SCHEMA_FILE_PATH)
+        except Exception as e:
+            raise NetworkException(e, sys)
+
 
     def validate_noof_cols(self, dataframe: pd.DataFrame) -> bool:
         try:
