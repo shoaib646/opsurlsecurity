@@ -10,7 +10,7 @@ def main():
         model_train = TrainingPipeline()
         model_train.run_pipeline()
     except Exception as e:
-        raise Exception(e, sys)
+        raise NetworkException(e, sys)
 
 
 

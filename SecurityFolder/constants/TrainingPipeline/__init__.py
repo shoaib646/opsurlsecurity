@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from dotenv import load_dotenv
-from networkx import non_neighbors
+
 
 load_dotenv()
 
@@ -61,21 +61,19 @@ DATA_VALIDATION_DRIFT_REPORT_FILE_NAME : str = 'report.yaml'
 '''
 Data Transformation related constant variables
 '''
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
 
-DATA_TRANSFORM_DIR_NAME : str = 'Data_Transformation'
-DATA_TRANSFORM_TRANSFORMED_DATA_DIR : str = 'Transformed_Data'
-DATA_TRANSFORM_TRANSFORMED_OBJECT_DIR : str = 'Transformed_Object'
-
-DATA_TRNSFORMATION_IMPUTER_PARAMS : dict = {
-    'missing_values':np.nan,
-    'non_neighbors':3,
-    'weights':'uniform',
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    "missing_values": np.nan,
+    "n_neighbors": 3,
+    "weights": "uniform",
 }
 
-DATA_TRANSFORM_TRAIN_FILE_PATH : str = 'train.npy'
+DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
 
-DATA_TRNSFORMA_TEST_FILE_PATH : str = 'test.npy'
-
+DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
 
 '''
 Data Trainer related constant variables
