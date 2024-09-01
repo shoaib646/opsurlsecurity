@@ -29,7 +29,8 @@ class DataValidation:
 
     def validate_noof_cols(self, dataframe: pd.DataFrame) -> bool:
         try:
-            pass
+            number_of_columns = len(self._schema_config['columns'])
+            logging.info(f"Required number of columns")
         except Exception as e:
             raise NetworkException(e, sys)
 
