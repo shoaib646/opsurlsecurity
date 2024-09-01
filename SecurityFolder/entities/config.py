@@ -64,7 +64,20 @@ class DataValidationConfig:
 
 class DataTransformationConfig:
     def __init__(self):
-        pass
+        self.data_transformation: str = os.path.join(training_pipeline_config.artifact_dir,
+                                                     training_pipeline.DATA_TRANSFORM_DIR_NAME)
+
+        self.transformed_train_file_path: str = os.path.join(self.data_transformation,
+                                                             training_pipeline.DATA_TRANSFORM_TRANSFORMED_DATA_DIR,
+                                                             training_pipeline.TRAIN_FILE_NAME.replace('.csv', '.npy'))
+
+        self.transformed_test_file_path: str = os.path.join(self.data_transformation,
+                                                            training_pipeline.DATA_TRANSFORM_TRANSFORMED_DATA_DIR,
+                                                            training_pipeline.TEST_FILE_NAME.replace('.csv', '.npy'))
+
+        self.transformed_object_file_path: str = os.path.join(self.data_transformation,
+                                                              training_pipeline.DATA_TRANSFORM_TRANSFORMED_OBJECT_DIR,
+                                                              training_pipeline.PREPROCESSING_OBJECT_FILE_NAME)
 
 class ModelTrainerConfig:
     def __init__(self):
