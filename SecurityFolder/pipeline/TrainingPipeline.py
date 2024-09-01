@@ -45,7 +45,8 @@ class TrainingPipeline:
         try:
             data_validation_config = DataValidationConfig(training_pipeline_config=self.training_pipeline_config)
             logging.info("Starting data validation")
-            data_validation = DataValidation(data_validation_config=data_validation_config, data_ingestion_artifact = data_ingestion_artifact)
+            data_validation = DataValidation(data_validation_config=data_validation_config,
+                                             data_ingestion_artifact = data_ingestion_artifact)
             data_validation_artifact = data_validation.initiate_data_validation()
             return data_validation_artifact
 
@@ -80,7 +81,8 @@ class TrainingPipeline:
     def run_pipeline(self):
         try:
             data_ingestion_artifact = self.start_data_ingestion()
-            data_validation = self.start_data_validation()
+            data_validation = self.start_data_validation(data_ingestion_artifact= data_ingestion_artifact)
+            print(data_validation)
 
         except Exception as e:
             raise NetworkException(e,sys)

@@ -43,7 +43,7 @@ numerical_columns:
   - Domain_registeration_length
   - Favicon
   - port
-  -   HTTPS_token
+  - HTTPS_token
   - Request_URL
   - URL_of_Anchor
   - Links_in_tags
