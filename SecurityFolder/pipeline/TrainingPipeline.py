@@ -75,7 +75,7 @@ class TrainingPipeline:
             self.modeltrainingconfig = ModelTrainerConfig(training_pipeline_config=self.training_pipeline_config)
 
             model_trainer = ModelTrainer(data_transformation_artifact=data_transformation_artifact,
-                                         model_tainer_config=self.modeltrainingconfig)
+                                         model_trainer_config=self.modeltrainingconfig)
 
             model_trainer_artifact  = model_trainer.initiate_model_trainer()
 
