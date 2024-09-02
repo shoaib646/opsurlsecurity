@@ -15,7 +15,8 @@ from SecurityFolder.exception.exception import NetworkException
 from SecurityFolder.logger.logger import logging
 
 # configrations
-from SecurityFolder.entities.config import (TrainingPipelineConfig,DataIngestionConfig, DataTransformationConfig,DataValidationConfig,
+from SecurityFolder.entities.config import (TrainingPipelineConfig,DataIngestionConfig,
+                                            DataTransformationConfig,DataValidationConfig,
                                            ModelRegistryConfig, ModelEvaluationConfig, ModelTrainerConfig)
 
 #artifacts
@@ -70,7 +71,8 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkException(e,sys)
 
-    def start_model_training(self, data_transformation_artifact:DataTransformationArtifact) -> ModelTrainerArtifact:
+    def start_model_training(self, data_transformation_artifact:DataTransformationArtifact)\
+            -> ModelTrainerArtifact:
         try:
             self.modeltrainingconfig = ModelTrainerConfig(training_pipeline_config=self.training_pipeline_config)
 
@@ -85,9 +87,19 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkException(e,sys)
 
-    def start_model_evaluation(self):
+    def start_model_evaluation(self, model_trainer_artifact:ModelTrainerArtifact,
+                               data_validation_artifact:DataValidationArtifact) -> ModelEvaluationArtifact:
         try:
-            pass
+            modelevalconfig:ModelEvaluation = ModelEvaluationConfig(training_pipeline_config=self.training_pipeline_config)
+
+            model_evaluation = ModelEvaluation(model_trainer_artifact=model_trainer_artifact,
+                                               data_validation_artifact=data_validation_artifact,
+                                               model_eval_config = modelevalconfig)
+
+            model_evaluation_artifact = model_evaluation.initiate_model_evaluation()
+
+            return model_evaluation_artifact
+
         except Exception as e:
             raise NetworkException(e,sys)
 
@@ -109,5 +121,6 @@ class TrainingPipeline:
             model_trainer_artifact = self.start_model_training(
                 data_transformation_artifact=data_transformation_artifact)
 
+            model_eval_artifact = self.start_model_evaluation(model_trainer_artifact=model_trainer_artifact)
         except Exception as e:
             raise NetworkException(e,sys)

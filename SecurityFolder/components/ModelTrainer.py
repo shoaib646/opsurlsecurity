@@ -3,6 +3,8 @@ from SecurityFolder.logger.logger import logging
 
 from SecurityFolder.entities.artifacts import DataTransformationArtifact, ModelTrainerArtifact
 from SecurityFolder.entities.config import ModelTrainerConfig
+from sklearn.model_selection import GridSearchCV
+
 
 import os, sys
 from xgboost import  XGBClassifier
@@ -20,12 +22,34 @@ class ModelTrainer:
             raise NetworkException(e, sys)
 
 
-    def perform_hyper_param_tuning(self):
-        pass
+    def perform_hyper_param_tuning(self, X_train, y_train):
+        try:
+            param_grid = {
+                'learning_rate': [0.01, 0.1, 0.2],
+                'max_depth': [3, 5, 7],
+                'n_estimators': [100, 200, 300],
+                'subsample': [0.8, 1.0]
+            }
+
+            xgb_model = XGBClassifier()
+            grid_search = GridSearchCV(estimator=xgb_model, param_grid=param_grid, cv=3, scoring='f1', verbose=1,
+                                       n_jobs=-1)
+
+            grid_search.fit(X_train, y_train)
+
+            best_model = grid_search.best_estimator_
+
+            logging.info(f'Best parameters found: {grid_search.best_params_}')
+            logging.info(f'Best F1 score from GridSearchCV: {grid_search.best_score_}')
+
+            return best_model
+        except Exception as e:
+            raise NetworkException(e, sys)
 
     def train(self, X_train, y_train):
         try:
-            model = XGBClassifier()
+            model = self.perform_hyper_param_tuning(X_train, y_train)
+
             model.fit(X_train, y_train)
             return model
         except Exception as e:
