@@ -6,3 +6,4 @@ pymongo
 certifi
 -e .
 pymongo[srv]
+xgboost
