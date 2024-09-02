@@ -8,7 +8,7 @@ from SecurityFolder.components.ModelRegistry import  ModelRegistry
 from SecurityFolder.components.ModelEvaluation import  ModelEvaluation
 from SecurityFolder.components.ModelTrainer import  ModelTrainer
 
-import subprocess # for getting filename of error while debugging
+
 
 # Exceptions & loggers
 from SecurityFolder.exception.exception import NetworkException
@@ -70,10 +70,18 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkException(e,sys)
 
-
-    def start_model_training(self):
+    def start_model_training(self, data_transformation_artifact:DataTransformationArtifact) -> ModelTrainerArtifact:
         try:
-            pass
+            self.modeltrainingconfig = ModelTrainerConfig(training_pipeline_config=self.training_pipeline_config)
+
+            model_trainer = ModelTrainer(data_transformation_artifact=data_transformation_artifact,
+                                         model_tainer_config=self.modeltrainingconfig)
+
+            model_trainer_artifact  = model_trainer.initiate_model_trainer()
+
+            return model_trainer_artifact
+
+
         except Exception as e:
             raise NetworkException(e,sys)
 
@@ -98,15 +106,8 @@ class TrainingPipeline:
             data_transformation_artifact = self.start_data_transformation(
                 data_validation_artifact=data_validation_artifact)
 
-
+            model_trainer_artifact = self.start_model_training(
+                data_transformation_artifact=data_transformation_artifact)
 
         except Exception as e:
             raise NetworkException(e,sys)
-
-
-
-
-
-
-
-

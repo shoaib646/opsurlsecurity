@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from google.cloud.aiplatform.metadata.schema.google.artifact_schema import ClassificationMetrics
+
 
 @dataclass
 class DataIngestionArtifact:
@@ -27,8 +29,16 @@ class DataTransformationArtifact:
 
 
 @dataclass
+class ClassificationMetricArtifact:
+    f1_score: float
+    precision_score: float
+    recall_score: float
+
+@dataclass
 class ModelTrainerArtifact:
-    pass
+    trained_model_path: str
+    train_metric_artifact : ClassificationMetricsArtifact
+    test_metric_artifact : ClassificationMetricsArtifact
 
 @dataclass
 class ModelEvaluationArtifact:

@@ -25,7 +25,7 @@ TRAIN_FILE_NAME : str = 'train.csv'
 TEST_FILE_NAME : str = 'test.csv'
 
 PREPROCESSING_OBJECT_FILE_NAME = 'Preprocessing.pkl'
-MODEL_FILE_NAME     = 'Model.pkl'
+MODEL_FILE_NAME     = 'model.pkl'
 SCHEMA_FILE_PATH    = os.path.join("data-schema", "schema.yaml")
 SCHEMA_DROP_COLS    = "drop_columns"
 
@@ -78,3 +78,22 @@ DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
 '''
 Data Trainer related constant variables
 '''
+MODEL_TRAINER_DIR_NAME : str = 'Model_Trainer'
+MODEL_TRAINER_TRAINED_MODEL_DIR :str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_NAME : str = 'model.pkl'
+MODEL_TRAINER_EXPECTED_SCORE : float = 0.6
+MODEL_TRAINER_OVER_UNDER_FIT_THRESH : float = 0.05
+
+'''
+Data Evaluation related constant variables
+'''
+
+MODEL_EVALUATION_DIR_NAME : str = 'ModelEvaluation'
+MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE : float = 0.02
+MODEL_EVALUATION_REPORT_NAME : str = 'EvaluationReport.yaml'
+
+MODEL_REGISTRY_DIR_NAME : str = 'ModelRegistry'
+MODEL_REGISTRY_SAVED_MODEL_DIR :str = SAVE_MODEL_DIR
+
+
+
