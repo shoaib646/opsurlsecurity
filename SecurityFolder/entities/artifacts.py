@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-from google.cloud.aiplatform.metadata.schema.google.artifact_schema import ClassificationMetrics
 
 
 @dataclass
